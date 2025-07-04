@@ -78,7 +78,9 @@ function createPhaseElement(phase, phaseIndex) {
   const percent = total ? Math.round((done / total) * 100) : 0;
   el.innerHTML = `
     <div class="flex items-center mb-14">
-      <input type="text" value="${phase.name}" class="phase-name-input bg-transparent border-b border-dashed border-blue-400 text-xl font-medium text-white focus:outline-none focus:border-solid px-2 w-[70%]">
+      <input type="text" value="${
+        phase.name
+      }" class="phase-name-input bg-transparent border-b border-dashed border-blue-400 text-xl font-medium text-white focus:outline-none focus:border-solid px-2 w-[60%] md:w-[70%]">
       <button class="delete-phase-btn ml-4 text-red-400 hover:text-red-300">🗑️</button>
       <span class="ml-auto text-sm font-medium px-3 py-1 bg-gray-700 rounded-full text-blue-400 phase-progress">${done}/${total} (${percent}%)</span>
     </div>
@@ -86,9 +88,13 @@ function createPhaseElement(phase, phaseIndex) {
       ${phase.tasks
         .map(
           (t, taskIndex) => `
-        <div class="border-l-4 border-${t.color}-500 pl-4 task-category" data-task-index="${taskIndex}">
+        <div class="border-l-4 border-${
+          t.color
+        }-500 pl-4 task-category" data-task-index="${taskIndex}">
           <div class="flex justify-between mb-2">
-            <input type="text" value="${t.category}" class="task-category-input bg-transparent border-b border-dashed border-gray-500 text-white font-semibold focus:outline-none">
+            <input type="text" value="${
+              t.category
+            }" class="task-category-input bg-transparent border-b border-dashed border-gray-500 text-white w-[300px] md:w-[500px] font-bold focus:outline-none">
             <button class="delete-task-category-btn text-red-400">✖</button>
           </div>
           <ul class="space-y-3 task-items-list">
@@ -98,8 +104,14 @@ function createPhaseElement(phase, phaseIndex) {
               <li class="flex items-center task-item">
                 <input type="checkbox" ${
                   item.completed ? "checked" : ""
-                } class="task-checkbox form-checkbox h-5 w-5 text-${t.color}-500 rounded border-gray-600 focus:ring-${t.color}-500 bg-gray-700" data-item-index="${itemIndex}">
-                <input type="text" value="${item.text}" class="task-item-input ml-2 bg-transparent border-b border-dashed border-gray-500 focus:outline-none focus:border-gray-400 w-full">
+                } class="task-checkbox form-checkbox h-5 w-5 text-${
+                  t.color
+                }-500 rounded border-gray-600 focus:ring-${
+                  t.color
+                }-500 bg-gray-700" data-item-index="${itemIndex}">
+                <input type="text" value="${
+                  item.text
+                }" class="task-item-input ml-2 bg-transparent border-b border-dashed border-gray-500 focus:outline-none focus:border-gray-400 w-full">
                 <button class="delete-task-item-btn ml-2 text-gray-400 hover:text-red-400">🗑️</button>
               </li>
             `
