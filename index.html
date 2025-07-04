@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Universal Progress Tracker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="bg-gray-900 text-gray-200 font-sans min-h-screen">
+    <header class="bg-gray-800 py-6 border-b border-gray-700">
+      <div class="container mx-auto px-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <h1
+          id="mainTitle"
+          class="editable-title text-3xl font-bold text-blue-400 inline-block flex-grow md:flex-grow-0"
+          contenteditable="true"
+          >My Progress Tracker</h1>
+
+        <div class="flex items-center space-x-2">
+          <button
+            id="addPhaseBtn"
+            class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-lg flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5 mr-2"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Add New Phase
+          </button>
+
+          <select
+            id="phaseSelect"
+            class="bg-gray-700 text-gray-200 rounded px-2 py-2 text-sm"
+            aria-label="Select phase"
+          >
+            <!-- dynamically filled by JS -->
+          </select>
+
+          <button
+            id="exportPhaseBtn"
+            class="bg-yellow-500 hover:bg-yellow-400 text-gray-900 px-4 py-2 rounded shadow"
+          >
+            Export Phase
+          </button>
+
+          <button
+            id="importPhaseBtn"
+            class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded shadow"
+          >
+            Import Phase
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+      <div id="phasesContainer"></div>
+
+      <section class="mb-12">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-2xl font-semibold text-blue-400">Resources</h2>
+          <button
+            id="addResourceBtn"
+            class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 mr-1"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Add Resource
+          </button>
+        </div>
+        <div id="resourcesList" class="grid md:grid-cols-3 gap-6"></div>
+      </section>
+    </main>
+
+    <footer class="bg-gray-800 py-4 border-t border-gray-700">
+      <div class="container mx-auto px-4 text-center text-gray-400">
+        <p>© <span id="currentYear"></span> Tanim || Universal Progress Tracker</p>
+        <p class="text-xs mt-1">
+          Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> + <kbd>Backspace</kbd> to clear all
+          data
+        </p>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
